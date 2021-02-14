@@ -1,0 +1,17 @@
+version: "3"
+networks:
+  sonarnet:
+services:
+  sonarqube:
+    image: sonarqube:lts
+    ports:
+      - 9000:9000
+    networks:
+      - sonarnet
+  jenkins:
+    image: jenkins/jenkins:latest
+    ports:
+      - 8080:8080
+      - 50000:50000
+    networks:
+      - sonarnet
